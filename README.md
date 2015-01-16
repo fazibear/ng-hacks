@@ -1,0 +1,3 @@
+# ng-playground
+
+Playing with angularjs ... grunt, coffee, slim ...
