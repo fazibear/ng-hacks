@@ -1,0 +1,14 @@
+{
+  "name": "angular-playground",
+  "description": " ",
+  "repository": " ",
+  "dependencies": {
+    "grunt": "",
+    "grunt-contrib-watch": "",
+    "grunt-contrib-coffee": "",
+    "grunt-slim": ""
+  },
+  "devDependencies": {
+    "grunt-slm": "0.0.1"
+  }
+}
