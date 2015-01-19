@@ -1,5 +1,6 @@
 class HelloController
-  hello = 'world'
+  constructor: ($scope) ->
+    $scope.hello = 'world'
 
 angular
   .module "HelloApp", []

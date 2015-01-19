@@ -1,37 +1,39 @@
 module.exports = (grunt) ->
   
   coffee_files = 'coffee/*.coffee'
-  slim_files   = 'templates/*.slim'
+  slm_files   = 'templates/*.slm'
   
   grunt.initConfig
     coffee:
       compileJoined:
         options:
           join: true
+          rails: true
         files:
           'public/app.js': [ coffee_files ]
-    slim:
-      dist:
-        options:
-          pretty: true
-        files: [
-          expand: true
-          cwd: slim_files.split('/')[0]
-          src: [ slim_files.split('/')[1] ]
-          dest: 'public/'
-          ext: '.html'
-        ]
+    
+    slm:
+       multiple_files:
+         src: slm_files
+         dest: 'public/'
+    
+    bower_concat:
+      all:
+        dest: 'public/deps.js'
+        cssDest: 'public/deps.css'
 
     watch:
       coffee:
         files: coffee_files
         tasks: [ 'coffee' ]
+      
       slm:
-        files: slim_files
-        tasks: [ 'slim' ]
+        files: slm_files
+        tasks: [ 'slm' ]
 
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-watch'
-  grunt.loadNpmTasks 'grunt-slim'
+  grunt.loadNpmTasks 'grunt-slm'
+  grunt.loadNpmTasks 'grunt-bower-concat'
 
-  grunt.registerTask 'default', ['coffee', 'slim']
+  grunt.registerTask 'default', ['coffee', 'slm', 'bower_concat']
